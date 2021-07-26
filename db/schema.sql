@@ -1,0 +1,21 @@
+DROP DATABASE IF EXISTS cats_db;
+CREATE DATABASE cats_db;
+
+USE cats_db;
+
+CREATE TABLE cats (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    isCute BOOLEAN DEFAULT true,
+    isAsleep BOOLEAN DEFAULT true
+);
+
+CREATE TABLE toys (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(200) NOT NULL,
+    score DECIMAL(4,2) NOT NULL,
+    review TEXT NOT NULL,
+    cat_id INT,
+    FOREIGN KEY (cat_id) REFERENCES cats(id) ON DELETE SET NULL
+);
+
